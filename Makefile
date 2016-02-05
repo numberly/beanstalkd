@@ -56,13 +56,17 @@ $(BINDIR)/%: %
 	$(INSTALL) -d $(dir $@)
 	$(INSTALL) $< $@
 
-CLEANFILES:=$(CLEANFILES) $(TARG)
+CLEANFILES:=$(CLEANFILES)
 
 $(OFILES) $(MOFILE): $(HFILES)
 
 .PHONY: clean
 clean:
 	rm -f *.o $(CLEANFILES)
+
+.PHONY: fclean
+fclean: clean
+	rm -f $(TARG)
 
 .PHONY: check
 check: ct/_ctcheck

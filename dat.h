@@ -63,6 +63,7 @@ extern struct Server srv;
 
 // Replaced by tests to simulate failures.
 extern FAlloc *falloc;
+extern struct stats global_stat;
 
 struct stats {
     uint urgent_ct;
@@ -70,6 +71,7 @@ struct stats {
     uint buried_ct;
     uint reserved_ct;
     uint pause_ct;
+    uint64   total_collisions_ct;
     uint64   total_delete_ct;
     uint64   total_jobs_ct;
 };

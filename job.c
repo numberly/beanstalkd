@@ -29,6 +29,9 @@ store_job(job j)
 
     index = _get_job_hash_index(j->r.id);
 
+    if (all_jobs[index])
+        ++global_stat.total_collisions_ct;
+
     j->ht_next = all_jobs[index];
     all_jobs[index] = j;
     all_jobs_used++;

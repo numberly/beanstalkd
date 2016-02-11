@@ -168,6 +168,7 @@ size_t job_data_size_limit = JOB_DATA_SIZE_LIMIT_DEFAULT;
     "cmd-pause-tube: %" PRIu64 "\n" \
     "job-timeouts: %" PRIu64 "\n" \
     "total-jobs: %" PRIu64 "\n" \
+    "total-collisions: %" PRIu64 "\n" \
     "max-job-size: %zu\n" \
     "current-tubes: %zu\n" \
     "current-connections: %u\n" \
@@ -229,7 +230,7 @@ size_t job_data_size_limit = JOB_DATA_SIZE_LIMIT_DEFAULT;
 static char bucket[BUCKET_BUF_SIZE];
 
 static uint ready_ct = 0;
-static struct stats global_stat = {0, 0, 0, 0, 0};
+struct stats global_stat = {0, 0, 0, 0, 0, 0};
 
 static tube default_tube;
 
@@ -914,6 +915,7 @@ fmt_stats(char *buf, size_t size, void *x)
             op_ct[OP_PAUSE_TUBE],
             timeout_ct,
             global_stat.total_jobs_ct,
+            global_stat.total_collisions_ct,
             job_data_size_limit,
             tubes.used,
             count_cur_conns(),

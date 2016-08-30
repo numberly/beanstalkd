@@ -60,6 +60,8 @@ typedef int(FAlloc)(int, int);
 extern const char version[];
 extern int verbose;
 extern struct Server srv;
+extern size_t all_jobs_cap;
+extern size_t all_jobs_used;
 
 // Replaced by tests to simulate failures.
 extern FAlloc *falloc;

@@ -169,6 +169,8 @@ size_t job_data_size_limit = JOB_DATA_SIZE_LIMIT_DEFAULT;
     "job-timeouts: %" PRIu64 "\n" \
     "total-jobs: %" PRIu64 "\n" \
     "max-job-size: %zu\n" \
+	"jobs-capacity: %zu\n" \
+	"jobs-stored: %zu\b" \
     "current-tubes: %zu\n" \
     "current-connections: %u\n" \
     "current-producers: %u\n" \
@@ -915,6 +917,8 @@ fmt_stats(char *buf, size_t size, void *x)
             timeout_ct,
             global_stat.total_jobs_ct,
             job_data_size_limit,
+			all_jobs_cap,
+			all_jobs_used,
             tubes.used,
             count_cur_conns(),
             count_cur_producers(),

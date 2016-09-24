@@ -170,7 +170,8 @@ size_t job_data_size_limit = JOB_DATA_SIZE_LIMIT_DEFAULT;
     "total-jobs: %" PRIu64 "\n" \
     "max-job-size: %zu\n" \
 	"jobs-capacity: %zu\n" \
-	"jobs-stored: %zu\b" \
+	"jobs-stored: %zu\n" \
+	"hashmap-load-factor: %f\n" \
     "current-tubes: %zu\n" \
     "current-connections: %u\n" \
     "current-producers: %u\n" \
@@ -919,6 +920,7 @@ fmt_stats(char *buf, size_t size, void *x)
             job_data_size_limit,
 			all_jobs_cap,
 			all_jobs_used,
+			(double)all_jobs_used / all_jobs_cap,
             tubes.used,
             count_cur_conns(),
             count_cur_producers(),
